@@ -106,6 +106,7 @@ class ReactiumDependencies {
 
         this.routes = Object.keys(this.manifest.allRoutes)
             .map(route => this.manifest.allRoutes[route])
+            .filter(route => route)
             .reduce((rts, route) => {
                 // Support multiple routable components per route file
                 if (Array.isArray(route)) {
