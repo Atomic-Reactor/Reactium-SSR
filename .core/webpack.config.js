@@ -97,6 +97,14 @@ module.exports = config => {
                 chunks: 'all',
             },
         },
+        resolve: {
+            alias: {
+                dna: path.resolve('./.core/dependencies/dna.js'),
+            },
+        },
+        resolveLoader: {
+            modules: ['node_modules', path.resolve(__dirname, 'loaders')],
+        },
         module: {
             rules: [
                 {
@@ -106,6 +114,9 @@ module.exports = config => {
                         extensions: ['.js', '.jsx', '.json'],
                     },
                     use: [
+                        {
+                            loader: 'dna',
+                        },
                         {
                             loader: 'babel-loader',
                         },

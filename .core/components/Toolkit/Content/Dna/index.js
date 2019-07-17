@@ -9,6 +9,7 @@ import op from 'object-path';
 import { Link } from 'react-router-dom';
 import _ from 'underscore';
 import Icon from 'reactium-core/components/Toolkit/Icon';
+import dna from 'dna';
 
 /**
  * -----------------------------------------------------------------------------
@@ -29,6 +30,8 @@ export default class Dna extends Component {
 
     constructor(props) {
         super(props);
+
+        console.log('dna data', dna);
 
         this.state = {
             prefs: this.props.prefs,
