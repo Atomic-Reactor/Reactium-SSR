@@ -215,7 +215,7 @@ const reactium = (gulp, config, webpackConfig) => {
         if (!isDev) {
             webpack(webpackConfig, (err, stats) => {
                 if (err) {
-                    console.log(err());
+                    console.log(err);
                     done();
                     return;
                 }

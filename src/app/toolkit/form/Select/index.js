@@ -23,7 +23,7 @@ const S = props => {
 
 export default class Select extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     render() {

@@ -14,7 +14,7 @@ import Radio from 'components/common-ui/form/Radio';
 
 class CompRadio extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {

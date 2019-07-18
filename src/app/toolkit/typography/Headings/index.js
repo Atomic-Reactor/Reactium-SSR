@@ -29,7 +29,7 @@ const H = props => {
 
 export default class Headings extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -63,7 +63,7 @@ export default class Headings extends Component {
                     <div>
                         <H index={i}>Heading {i}</H>
                     </div>
-                </div>
+                </div>,
             );
         }
 

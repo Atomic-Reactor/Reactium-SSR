@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 class TextAlign extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -46,8 +46,7 @@ class TextAlign extends Component {
                                 <div
                                     className={
                                         'text-xs-right text-sm-left number'
-                                    }
-                                >
+                                    }>
                                     <span className={'hide-xs-only'}>
                                         text-sm-left
                                     </span>
@@ -89,8 +88,7 @@ class TextAlign extends Component {
                                 <div
                                     className={
                                         'text-sm-right text-xs-left number'
-                                    }
-                                >
+                                    }>
                                     <span className={'hide-xs-only'}>
                                         text-sm-right
                                     </span>

@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 class Theming extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {

@@ -4,7 +4,6 @@ export default (elms = []) => {
     let cmps = {};
     if (typeof window !== 'undefined') {
         const contexts = require('manifest').contexts;
-        // Object.values(contexts).forEach(context => context.keys().map(key => console.log(key, context.resolve(key))))
 
         // Traverse the Array of bindable elements and require the components for them
         elms.forEach(({ type, path }) => {

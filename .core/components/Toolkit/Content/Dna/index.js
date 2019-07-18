@@ -9,7 +9,7 @@ import op from 'object-path';
 import { Link } from 'react-router-dom';
 import _ from 'underscore';
 import Icon from 'reactium-core/components/Toolkit/Icon';
-import dna from 'dna';
+import getDna, { moduleList } from 'dna';
 
 /**
  * -----------------------------------------------------------------------------
@@ -31,11 +31,10 @@ export default class Dna extends Component {
     constructor(props) {
         super(props);
 
-        console.log('dna data', dna);
-
         this.state = {
             prefs: this.props.prefs,
             visible: this.props.visible,
+            dependencies: [],
         };
 
         this.cont = React.createRef();
@@ -49,6 +48,8 @@ export default class Dna extends Component {
     }
 
     componentDidMount() {
+        const { component } = this.props;
+        this.setDependencies(component);
         this.applyPrefs();
     }
 
@@ -175,7 +176,7 @@ export default class Dna extends Component {
             }
 
             const results = [];
-            const deps = item.component.dependencies();
+            const deps = this.getDependencies(item.component);
 
             deps.forEach(str => {
                 if (typeof str !== 'string') {
@@ -288,32 +289,42 @@ export default class Dna extends Component {
         );
     }
 
-    render() {
-        if (process.env.NODE_ENV !== 'development') {
-            return null;
-        }
+    setDependencies(component) {
+        let deps = op.has(component, 'dependencies')
+            ? component.dependencies()
+            : null;
+        if (!deps) return;
 
-        const { visible } = this.state;
+        if (moduleList && deps in moduleList) {
+            getDna(moduleList[deps]).then(dependencies => {
+                this.setState({
+                    dependencies,
+                });
+            });
+        }
+    }
+
+    render() {
+        const { visible, dependencies } = this.state;
         const { component, height } = this.props;
+
+        console.log({ dependencies });
 
         if (typeof component === 'undefined' || typeof component === 'string') {
             return null;
         }
 
-        const deps = op.has(component, 'dependencies')
-            ? component.dependencies()
-            : [];
-
         const display = visible === true ? 'block' : 'none';
 
-        const npm = _.compact(deps.map(item => this.getNPM(item, deps)));
-        const dependencies = _.compact(
-            deps.map(item => this.getDependency(item)),
-        );
+        // const npm = _.compact(deps.map(item => this.getNPM(item, deps)));
+        // const dependencies = _.compact(
+        //     deps.map(item => this.getDependency(item)),
+        // );
+        //
+        // const dependents = this.getDependents(component);
 
-        const dependents = this.getDependents(component);
-
-        const count = npm.length + dependencies.length + dependents.length;
+        const count = dependencies.length;
+        // + dependents.length;
 
         if (count < 1) {
             return (
@@ -338,7 +349,7 @@ export default class Dna extends Component {
                 ref={this.cont}
                 className={'re-toolkit-dna-view'}
                 style={{ height, display }}>
-                {dependents.length > 0 ? (
+                {false && dependents.length > 0 ? (
                     <Fragment>
                         <div className={'re-toolkit-card-heading thin'}>
                             Dependents
@@ -363,27 +374,13 @@ export default class Dna extends Component {
                         </div>
                         <ul>
                             {dependencies.map((item, i) => {
-                                const Alink = item;
-                                return Alink ? (
+                                // const Alink = item;
+                                return item ? (
                                     <li key={`dep-${i}`}>
-                                        <Alink />
-                                    </li>
-                                ) : null;
-                            })}
-                        </ul>
-                    </Fragment>
-                ) : null}
-                {npm.length > 0 ? (
-                    <Fragment>
-                        <div className={'re-toolkit-card-heading thin'}>
-                            NPM Modules
-                        </div>
-                        <ul>
-                            {npm.map((item, i) => {
-                                const Alink = item;
-                                return Alink ? (
-                                    <li key={`dep-${i}`}>
-                                        <Alink />
+                                        {
+                                            // <Alink />
+                                            item
+                                        }
                                     </li>
                                 ) : null;
                             })}

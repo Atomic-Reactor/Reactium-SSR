@@ -14,7 +14,7 @@ import Checkbox from 'components/common-ui/form/Checkbox';
 
 class CompCheckbox extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {

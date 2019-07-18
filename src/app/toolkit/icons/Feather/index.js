@@ -16,7 +16,7 @@ import Icon from 'components/common-ui/Icon';
 
 export default class LinearIcons extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     state = {

@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const DnaChildrenPlugin = require('./plugins/dna-children');
 const env = process.env.NODE_ENV || 'development';
 const rootPath = path.resolve(__dirname, '..');
 
@@ -77,6 +78,7 @@ module.exports = config => {
 
     if (env === 'production') {
         plugins.push(new CompressionPlugin());
+        plugins.push(new DnaChildrenPlugin());
     }
 
     const defaultConfig = {

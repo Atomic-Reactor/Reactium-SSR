@@ -34,6 +34,7 @@ const alias = {
     components: './src/app/components',
     'reactium-core': './.core',
     dependencies: './.core/dependencies',
+    dna: './.core/dependencies/dna.js',
     toolkit: './src/app/toolkit',
 };
 

@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 class Textfield extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -38,7 +38,7 @@ class Textfield extends Component {
             <form>
                 <div className={'form-group'}>
                     <input
-                        type="text"
+                        type='text'
                         autoComplete={'off'}
                         name={'text-input'}
                         placeholder={'placeholder'}
@@ -47,7 +47,7 @@ class Textfield extends Component {
 
                 <div className={'form-group'}>
                     <input
-                        type="text"
+                        type='text'
                         autoComplete={'off'}
                         name={'text-input'}
                         readOnly
@@ -57,7 +57,7 @@ class Textfield extends Component {
 
                 <div className={'form-group'}>
                     <input
-                        type="text"
+                        type='text'
                         autoComplete={'off'}
                         name={'text-input'}
                         placeholder={'disabled'}
@@ -69,7 +69,7 @@ class Textfield extends Component {
                     <label>
                         Focused:
                         <input
-                            type="text"
+                            type='text'
                             autoComplete={'off'}
                             name={'text-input'}
                             className={'focus'}
@@ -82,7 +82,7 @@ class Textfield extends Component {
                     <label>
                         Error:
                         <input
-                            type="text"
+                            type='text'
                             autoComplete={'off'}
                             name={'text-input'}
                         />
@@ -98,7 +98,7 @@ class Textfield extends Component {
                                 Field 1:
                             </label>
                             <input
-                                type="text"
+                                type='text'
                                 autoComplete={'off'}
                                 name={'text-input'}
                             />
@@ -110,7 +110,7 @@ class Textfield extends Component {
                                 Field 2:
                             </label>
                             <input
-                                type="text"
+                                type='text'
                                 autoComplete={'off'}
                                 name={'text-input'}
                             />

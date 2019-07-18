@@ -14,7 +14,7 @@ import colorProfile from 'appdir/../assets/style/_scss/colors';
 
 class Colors extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {

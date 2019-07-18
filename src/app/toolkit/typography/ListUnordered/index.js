@@ -14,7 +14,7 @@ import Lipsum from 'toolkit/Lipsum';
 
 export default class ListUnordered extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -35,7 +35,7 @@ export default class ListUnordered extends Component {
             output.push(
                 <li key={`item-${i}`}>
                     <Lipsum length={21} />
-                </li>
+                </li>,
             );
         }
 

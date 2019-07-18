@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 class ButtonSizing extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -60,8 +60,7 @@ class ButtonSizing extends Component {
                     <div className={'col-xs-12 col-sm text-center my-10'}>
                         <div className={'mb-xs-8 mb-sm-10'}>
                             <button
-                                className={`btn-primary-${sz}-outline-pill`}
-                            >
+                                className={`btn-primary-${sz}-outline-pill`}>
                                 Outline Pill
                             </button>
                         </div>
@@ -93,8 +92,7 @@ class ButtonSizing extends Component {
                     <span className={'form-group mr-10'}>
                         <select
                             value={type}
-                            onChange={this.onTypeChange.bind(this)}
-                        >
+                            onChange={this.onTypeChange.bind(this)}>
                             {Object.keys(types).map((k, i) => {
                                 return (
                                     <option key={`type-${i}`} value={k}>
@@ -108,8 +106,7 @@ class ButtonSizing extends Component {
                     <div className={'form-group'}>
                         <select
                             value={style}
-                            onChange={this.onStyleChange.bind(this)}
-                        >
+                            onChange={this.onStyleChange.bind(this)}>
                             {Object.keys(styles).map((k, i) => {
                                 return (
                                     <option key={`style-${i}`} value={k}>
@@ -135,21 +132,18 @@ class ButtonSizing extends Component {
                                 return (
                                     <div
                                         key={`size-${i}`}
-                                        className={'col-xs-12'}
-                                    >
+                                        className={'col-xs-12'}>
                                         <div className={'text-center my-10'}>
                                             <button
                                                 type={'button'}
-                                                className={cls}
-                                            >
+                                                className={cls}>
                                                 {name}
                                             </button>
                                         </div>
                                         <div
                                             className={
                                                 'small text-center my-10'
-                                            }
-                                        >
+                                            }>
                                             <kbd>.{cls}</kbd>
                                         </div>
                                     </div>
@@ -169,21 +163,21 @@ ButtonSizing.defaultProps = {
         sm: 'Small',
         default: 'Default',
         md: 'Medium',
-        lg: 'Large'
+        lg: 'Large',
     },
     style: 'default',
     styles: {
         default: 'Default',
         pill: 'Pill',
         outline: 'Outline',
-        'outline-pill': 'Outline Pill'
+        'outline-pill': 'Outline Pill',
     },
     type: 'primary',
     types: {
         primary: 'Primary',
         secondary: 'Secondary',
-        tertiary: 'Tertiary'
-    }
+        tertiary: 'Tertiary',
+    },
 };
 
 export default ButtonSizing;

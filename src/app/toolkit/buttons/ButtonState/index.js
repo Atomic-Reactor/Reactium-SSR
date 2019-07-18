@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 class ButtonState extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     constructor(props) {
@@ -38,8 +38,7 @@ class ButtonState extends Component {
                         <select
                             value={active}
                             onChange={this.onChange.bind(this)}
-                            className={`mt-xs-20 mr-xs-24`}
-                        >
+                            className={`mt-xs-20 mr-xs-24`}>
                             {Object.keys(types).map((k, i) => {
                                 return (
                                     <option key={`type-${i}`} value={k}>
@@ -174,8 +173,7 @@ class ButtonState extends Component {
                         <div className={`col-xs-6 col-sm text-center my-10`}>
                             <div className={`mb-xs-8 mb-sm-10`}>
                                 <button
-                                    className={`${cls}-outline-pill active`}
-                                >
+                                    className={`${cls}-outline-pill active`}>
                                     Outline Pill
                                 </button>
                             </div>
@@ -247,8 +245,7 @@ class ButtonState extends Component {
                             <div className={`mb-xs-8 mb-sm-10`}>
                                 <button
                                     className={`${cls}-pill`}
-                                    disabled={true}
-                                >
+                                    disabled={true}>
                                     {name} Pill
                                 </button>
                             </div>
@@ -260,8 +257,7 @@ class ButtonState extends Component {
                             <div className={`mb-xs-8 mb-sm-10`}>
                                 <button
                                     className={`${cls}-outline`}
-                                    disabled={true}
-                                >
+                                    disabled={true}>
                                     Outline
                                 </button>
                             </div>
@@ -273,8 +269,7 @@ class ButtonState extends Component {
                             <div className={`mb-xs-8 mb-sm-10`}>
                                 <button
                                     className={`${cls}-outline-pill`}
-                                    disabled={true}
-                                >
+                                    disabled={true}>
                                     Outline Pill
                                 </button>
                             </div>
@@ -294,8 +289,8 @@ ButtonState.defaultProps = {
     types: {
         primary: 'Primary',
         secondary: 'Secondary',
-        tertiary: 'Tertiary'
-    }
+        tertiary: 'Tertiary',
+    },
 };
 
 export default ButtonState;

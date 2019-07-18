@@ -14,7 +14,7 @@ import Lipsum from 'toolkit/Lipsum';
 
 export default class TextStrike extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     render() {

@@ -13,7 +13,7 @@ import React, { Component, Fragment } from 'react';
 
 export default class ButtonBlock extends Component {
     static dependencies() {
-        return typeof module !== 'undefined' ? module.children : [];
+        return typeof module !== 'undefined' ? module.id : null;
     }
 
     render() {
@@ -21,8 +21,7 @@ export default class ButtonBlock extends Component {
             <Fragment>
                 <div
                     style={{ width: '100%' }}
-                    className={'p-20 bg-grey-light mb-xs-10 mb-sm-20'}
-                >
+                    className={'p-20 bg-grey-light mb-xs-10 mb-sm-20'}>
                     <button className={`btn-primary-lg btn-block`}>
                         Primary Block
                     </button>
